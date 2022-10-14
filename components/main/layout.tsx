@@ -8,13 +8,13 @@ type Props = {
 
 const Layout = ({ preview, children }: Props) => {
   return (
-    <>
+    <div className='overflow-hidden'>
       <Meta />
       <div className="min-h-screen">
         <main>{children}</main>
       </div>
       <Footer />
-    </>
+    </div>
   )
 }
 

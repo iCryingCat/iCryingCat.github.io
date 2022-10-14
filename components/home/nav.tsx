@@ -9,12 +9,12 @@ export type Group = {
 }
 
 type Props = {
-    allGroups: Group[]
+    allIndex: Group[]
 }
 
-export default function Nav({ allGroups }: Props) {
+export default function Nav({ allIndex }: Props) {
     return (
-        <div className="block flex flex-row px-2 py-1 bg-gradient-to-r from-blue-400 to-white">
+        <div className="block flex flex-row px-2 pt-5 bg-gradient-to-r from-blue-400 to-green-400">
             <Container>
                 <div className="flex flex-row">
                     <h1 className="text-white text-4xl font-bold">
@@ -24,7 +24,7 @@ export default function Nav({ allGroups }: Props) {
                     </h1>
                     <div className="flex flex-row ml-10">
                         {
-                            allGroups.map(group => {
+                            allIndex.map(group => {
                                 return <Dropdown title={group.title} indexs={group.indexs} />;
                             })
                         }
@@ -32,8 +32,8 @@ export default function Nav({ allGroups }: Props) {
                 </div>
 
             </Container>
-            <div className="mr-4">
-                <h1 className="p-2 text-blue-400 hover:bg-blue-400 hover:text-white">
+            <div>
+                <h1 className="mr-4 py-2 px-4 text-white font-bold hover:bg-blue-400 hover:text-white">
                     <Link href={"/login"}>
                         <a>Login</a>
                     </Link>

@@ -1,18 +1,49 @@
 .markdown {
-  @apply text-lg leading-relaxed;
+  @apply text-lg leading-relaxed; 
 }
 
-.markdown p,
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-  @apply my-6;
+  @apply py-2 px-4 mx-16;
+}
+
+.markdown p{
+  @apply py-2 px-6 mx-16;
+}
+
+.markdown li {
+  @apply list-decimal mx-8 my-4 ;
+}
+
+.markdown a{
+  @apply underline ;
+}
+
+.markdown pre {
+  @apply mx-24 my-4 p-4 bg-black bg-opacity-75 shadow-inner rounded text-white
+}
+
+.markdown h1 {
+  @apply text-4xl text-white mt-16 mb-4 m-2 p-3 leading-snug font-bold bg-gradient-to-r from-red-400 to-white rounded-l;
 }
 
 .markdown h2 {
-  @apply text-3xl mt-12 mb-4 leading-snug;
+  @apply text-2xl text-white mt-12 mb-4 m-6 p-2 leading-snug italic bg-gradient-to-r from-yellow-400 to-white rounded-l;
 }
 
 .markdown h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  @apply text-xl text-white mt-8 mb-4 m-12 p-1 leading-snug bg-gradient-to-r from-blue-400 to-white rounded-l;
+}
+
+.markdown h4 {
+  @apply text-lg text-blue-400 font-bold italic mt-8 mb-4 m-12 p-1 leading-snug ;
+}
+
+.markdown h5 {
+  @apply text-base text-blue-400 font-bold italic mt-8 mb-4 m-12 p-1 leading-snug ;
+}
+
+.markdown h6 {
+  @apply text-sm text-blue-400 font-bold italic mt-8 mb-4 m-12 p-1 leading-snug ;
 }

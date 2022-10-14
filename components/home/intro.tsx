@@ -1,10 +1,22 @@
+import Avatar from "../share/avatar"
 
 const Intro = () => {
   return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between mt-5 mb-5 md:mb-5">
-      <h1 className="text-red text-5xl md:text-4xl font-bold tracking-tighter leading-tight md:pr-8">
-        后来再没有回头
-      </h1>
+    <section className="flex-col md:flex-row flex items-center md:justify-between mt-5 mb-5 md:mb-5 p-2 bg-gradient-to-r from-red-400 to-white">
+      <div className="hidden md:block md:my-2">
+        <div>
+          <a href="https://github.com/iCryingCat" className="hover:underline text-white">
+            <Avatar name={"南山北海 (Github)"} picture={"/assets/blog/authors/head.jpg"} />
+          </a>
+        </div>
+        <h1 className="my-2 mx-16 italic text-sm">
+          毕业院校：西南科技大学
+          <br></br>
+          当前状态：待入职
+          <br></br>
+          兴趣爱好：游戏、音乐、自驾游
+        </h1>
+      </div>
     </section>
   )
 }

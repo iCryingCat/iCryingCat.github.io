@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Intro from '../components/home/intro'
 import Nav, { Group } from '../components/home/nav'
 import Container from '../components/main/container'
 import Layout from '../components/main/layout'
@@ -23,20 +24,20 @@ export default function Index({ allPosts }: Props) {
     groupMap[post.menu].indexs.push(post);
   })
 
-  const allGroups: Group[] = []
+  const navIndexs: Group[] = []
   menus.forEach(menu => {
-    allGroups.push(groupMap[menu])
+    navIndexs.push(groupMap[menu])
   })
-  
+
   return (
     <>
       <Layout>
         <Head>
           <title>Crying Cat</title>
         </Head>
-        <Nav allGroups={allGroups} />
+        <Nav allIndex={navIndexs} />
         <Container>
-
+          <Intro></Intro>
         </Container>
       </Layout>
     </>

@@ -1,6 +1,7 @@
 import ErrorPage from "next/error";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Container from "../../components/main/container";
 import Layout from "../../components/main/layout";
 import Header from "../../components/post/header";
@@ -9,7 +10,6 @@ import PostHeader from "../../components/post/post-header";
 import PostTitle from "../../components/post/post-title";
 import type PostType from "../../interfaces/post";
 import { getAllPosts, getPostBySlug } from "../../lib/api";
-import { CMS_NAME } from "../../lib/constants";
 import markdownToHtml from "../../lib/markdownToHtml";
 
 type Props = {
@@ -23,6 +23,7 @@ export default function Post({ post, morePosts, preview }: Props) {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+
   return (
     <Layout preview={preview}>
       <Container>
@@ -31,21 +32,29 @@ export default function Post({ post, morePosts, preview }: Props) {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article className="mb-32">
-              <Head>
-                <title>
-                  {post.title}
-                </title>
-                <meta property="og:image" content={post.ogImage.url} />
-              </Head>
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                author={post.author}
-              />
-              <PostBody content={post.content} />
-            </article>
+            <div className="flex flex-row">
+              <div className="w-3/10">
+                <Container>
+                  <h1>目录</h1>
+                </Container>
+              </div>
+              <article className="mb-32 w-7/10">
+                <Head>
+                  <title>
+                    {post.title}
+                  </title>
+                  <meta property="og:image" content={post.ogImage.url} />
+                </Head>
+                <PostHeader
+                  title={post.title}
+                  coverImage={post.coverImage}
+                  date={post.date}
+                  author={post.author}
+                />
+                <PostBody content={post.content} />
+              </article>
+            </div>
+
           </>
         )}
       </Container>

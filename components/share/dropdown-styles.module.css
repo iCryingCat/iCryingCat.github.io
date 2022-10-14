@@ -1,6 +1,6 @@
 /* 下拉按钮样式 */
 .dropbtn {
-    @apply px-5 py-3 text-sm text-white font-bold w-32
+    @apply mt-2 py-4 text-sm text-white font-bold w-36
 }
 
 /* 容器 <div> - 需要定位下拉内容 */
@@ -11,7 +11,7 @@
 
 /* 下拉内容 (默认隐藏) */
 .dropdown-content {
-    @apply w-32;
+    @apply w-36;
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -20,7 +20,7 @@
 
 /* 下拉菜单的链接 */
 .dropdown-content a {
-    @apply py-3 text-black text-sm text-center;
+    @apply py-4 text-black text-sm text-center;
     text-decoration: none;
     display: block;
 }
