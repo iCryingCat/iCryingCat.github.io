@@ -10,11 +10,11 @@ const Intro = () => {
           </a>
         </div>
         <h1 className="my-2 mx-16 italic text-sm">
-          毕业院校：西南科技大学
+          西南科技大学
           <br></br>
-          当前状态：待入职
+          游戏、音乐、自驾游
           <br></br>
-          兴趣爱好：游戏、音乐、自驾游
+          天蝎
         </h1>
       </div>
     </section>

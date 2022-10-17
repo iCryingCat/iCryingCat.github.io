@@ -14,7 +14,7 @@ type Props = {
 
 export default function Nav({ allIndex }: Props) {
     return (
-        <div className="block flex flex-row px-2 pt-5 bg-gradient-to-r from-blue-400 to-green-400">
+        <div className="block flex flex-row px-2 pt-5 bg-gradient-to-r from-blue-600 to-red-200">
             <Container>
                 <div className="flex flex-row">
                     <h1 className="text-white text-4xl font-bold">
@@ -30,15 +30,7 @@ export default function Nav({ allIndex }: Props) {
                         }
                     </div>
                 </div>
-
             </Container>
-            <div>
-                <h1 className="mr-4 py-2 px-4 text-white font-bold hover:bg-blue-400 hover:text-white">
-                    <Link href={"/login"}>
-                        <a>Login</a>
-                    </Link>
-                </h1>
-            </div>
         </div>
     );
 };
