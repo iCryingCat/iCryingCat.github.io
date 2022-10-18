@@ -8,12 +8,12 @@ author:
   name: Crying Cat
   picture: "/assets/blog/authors/head.jpg"
 ogImage:
-  url: "/assets/blog/preview/cover.jpg"MV
+  url: "/assets/blog/preview/cover.jpg"
 ---
 
-# MVVM UI框架
+# MVVM UI 框架
 
-首先，ui框架最基本的功能是提供给外部显示和关闭某一个界面的接口，IView接口规范所有界面类，BindPath返回界面对应的预制体路径，当然这个路径是相对路径，基路径将会在UIManager中封装好。
+首先，ui 框架最基本的功能是提供给外部显示和关闭某一个界面的接口，IView 接口规范所有界面类，BindPath 返回界面对应的预制体路径，当然这个路径是相对路径，基路径将会在 UIManager 中封装好。
 
 ```c#
 using System;
@@ -35,7 +35,7 @@ namespace GFramework.UI
 }
 ```
 
-MVVM框架设计是一个View和一个ViewModel双向绑定，IBinding接口规范可绑定属性，BindingContext属性赋值和返回绑定的ViewModel对象
+MVVM 框架设计是一个 View 和一个 ViewModel 双向绑定，IBinding 接口规范可绑定属性，BindingContext 属性赋值和返回绑定的 ViewModel 对象
 
 ```c#
 using System;
@@ -59,7 +59,7 @@ namespace GFramework.UI
 }
 ```
 
-接下来定义界面基类BaseView，构造时需要赋值对应的ViewModel，你会发现BaseView并不继承Mono，那么如何获取UGUI组件呢，注意到BaseView中有UIContainer对象，它是继承自Mono的类，持有需要获取的UGUI组件，
+接下来定义界面基类 BaseView，构造时需要赋值对应的 ViewModel，你会发现 BaseView 并不继承 Mono，那么如何获取 UGUI 组件呢，注意到 BaseView 中有 UIContainer 对象，它是继承自 Mono 的类，持有需要获取的 UGUI 组件，
 
 ```c#
 using UnityEngine;
@@ -190,7 +190,7 @@ namespace GFramework.UI
 }
 ```
 
-UIContainer类实现如下，UIVar定义一个需要代码获取的UGUI组件
+UIContainer 类实现如下，UIVar 定义一个需要代码获取的 UGUI 组件
 
 ```c#
 using System;
@@ -229,11 +229,9 @@ namespace GFramework.UI
 }
 ```
 
+# RPC 框架
 
-
-# RPC框架
-
-ProtoDefine是消息类型枚举，一个请求或者服务器调用消息对应一个枚举值
+ProtoDefine 是消息类型枚举，一个请求或者服务器调用消息对应一个枚举值
 
 ```c#
 using System;
@@ -308,9 +306,9 @@ namespace Share.Protocols
 
 ```
 
-由于Socket发送的数据需要是字节数组，所有还需要序列化消息对象。
+由于 Socket 发送的数据需要是字节数组，所有还需要序列化消息对象。
 
-ProtoBufNetSerializer提供ProtoBufNet序列化、反序列化类对象接口，VS编译器使用NUGet包管理器下载ProtoBufNet插件，Vscode需要先安装NuGet Gallery。
+ProtoBufNetSerializer 提供 ProtoBufNet 序列化、反序列化类对象接口，VS 编译器使用 NUGet 包管理器下载 ProtoBufNet 插件，Vscode 需要先安装 NuGet Gallery。
 
 ```c#
 using System;
@@ -362,7 +360,7 @@ namespace GFramework.Network
 
 序列化得到的字节数组只是消息体对象，一个消息一般由消息头+消息体组成，该如何进行打包和解包，这部分应当是可以根据实际需要变化的。
 
-APacker是打包器的基类，提供打包和解包的接口，关于消息包如何进行打包，如：包长度+协议名+消息体，以及解包需要继承该类，并重写Pack、UnPack方法
+APacker 是打包器的基类，提供打包和解包的接口，关于消息包如何进行打包，如：包长度+协议名+消息体，以及解包需要继承该类，并重写 Pack、UnPack 方法
 
 ```c#
 using System;
@@ -496,11 +494,11 @@ namespace GFramework.Network
 }
 ```
 
-关于数据包如何定义、构造，解析已经完成，接下来需要将打包好的数据通过socket发送给服务器。
+关于数据包如何定义、构造，解析已经完成，接下来需要将打包好的数据通过 socket 发送给服务器。
 
 一个商业游戏中游戏的消息通信会被分为多个部分，比如登录、大厅、战斗，不同部分的通信的消息打包、解包、如何分发可能都各有不同，但是他们都有一个相同的逻辑，就是打包、发送、接收、解包、分发，完成这一套动作的功能我们把它定义在一个通道内完成。
 
-AChannel是Tcp、Udp通道基类，通道提供发送和接收接口，并且持有一个分发器、打包器，以及当前通信对象的ip四元组
+AChannel 是 Tcp、Udp 通道基类，通道提供发送和接收接口，并且持有一个分发器、打包器，以及当前通信对象的 ip 四元组
 
 ```c#
 using System.Net;
@@ -531,7 +529,7 @@ namespace GFramework.Network
 }
 ```
 
-ADispatcher是分发器基类，channel是被持有的通道对象，DecodeForm方法用于通道接收到消息，经过打包器解包后进行反序列化得到消息类对象，得到对象后怎么进行分发是我们需要自主实现的逻辑。
+ADispatcher 是分发器基类，channel 是被持有的通道对象，DecodeForm 方法用于通道接收到消息，经过打包器解包后进行反序列化得到消息类对象，得到对象后怎么进行分发是我们需要自主实现的逻辑。
 
 ```c#
 using System;
@@ -551,7 +549,7 @@ namespace GFramework.Network
 }
 ```
 
-服务器接收到消息并返回客户端该如何接收呢，创建LogicDispatcher继承分发器基类，具体实现请阅读一下代码
+服务器接收到消息并返回客户端该如何接收呢，创建 LogicDispatcher 继承分发器基类，具体实现请阅读一下代码
 
 ```c#
 using System;
@@ -685,7 +683,7 @@ namespace GFramework.Network
 
 ```
 
-TcpClientProxy是客户端代理，提供连接服务器、发送、接收消息的异步方法，创建时需要指定客户端使用哪一个端口连接服务器，
+TcpClientProxy 是客户端代理，提供连接服务器、发送、接收消息的异步方法，创建时需要指定客户端使用哪一个端口连接服务器，
 
 ```c#
 using System;
@@ -831,7 +829,7 @@ namespace GFramework.Network
 
 ```
 
-C2S（客户端到服务器）消息类型继承自ICaller，S2C（服务器到客户端）消息类型继承自ICallee，RpcCallBack是所有RPC消息回调的委托类型
+C2S（客户端到服务器）消息类型继承自 ICaller，S2C（服务器到客户端）消息类型继承自 ICallee，RpcCallBack 是所有 RPC 消息回调的委托类型
 
 ```c#
 using System;
@@ -849,7 +847,7 @@ namespace GFramework.Network
 }
 ```
 
-定义一个简单的逻辑服协议接口，IHall2Logic定义大厅请求服务器方法，ILogic2Hall定义服务器下发消息
+定义一个简单的逻辑服协议接口，IHall2Logic 定义大厅请求服务器方法，ILogic2Hall 定义服务器下发消息
 
 ```c#
 using System.Net;
@@ -874,7 +872,7 @@ namespace Share.Services
 }
 ```
 
-HallService继承IHall2Logic接口，实现请求消息封装
+HallService 继承 IHall2Logic 接口，实现请求消息封装
 
 ```c#
 using GFramework.Network;
@@ -915,7 +913,7 @@ namespace Share.Network
 }
 ```
 
-在大厅功能需要调用RPC请求时，直接调用HallService的相关方法，并编写回调逻辑
+在大厅功能需要调用 RPC 请求时，直接调用 HallService 的相关方法，并编写回调逻辑
 
 ```c#
 using System;
@@ -961,7 +959,7 @@ public void OnLogin()
 }
 ```
 
-由于unity不允许在其他线程调用游戏主线程，所以需要借助doom来处理服务器回调的逻辑。
+由于 unity 不允许在其他线程调用游戏主线程，所以需要借助 doom 来处理服务器回调的逻辑。
 
 ```c#
 using UnityEngine;
@@ -1134,8 +1132,6 @@ public class Loom : MonoBehaviour
 }
 
 ```
-
-
 
 # 导表工具
 
